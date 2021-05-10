@@ -2,7 +2,7 @@ const passport = require("passport");
 const mongoose = require("mongoose");
 const OAuth2Strategy = require("passport-oauth2");
 const keys = require("../config/keys");
-
+const { getLoyaltyProgram } = require("../utils/squareUtils");
 const User = mongoose.model("users");
 
 passport.serializeUser((user, done) => {
@@ -30,6 +30,10 @@ passport.use(
         "PAYMENTS_WRITE",
         "PAYMENTS_READ",
         "PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS",
+        "MERCHANT_PROFILE_WRITE",
+        "MERCHANT_PROFILE_READ",
+        "ORDERS_WRITE",
+        "ORDERS_READ",
       ],
     },
     async function (accessToken, refreshToken, profile, done) {
@@ -37,7 +41,14 @@ passport.use(
       if (existingAccount) {
         return done(null, existingAccount);
       }
-      const newAccount = await new User({ accessToken: accessToken }).save();
+
+      let newUser = { accessToken: accessToken };
+      const loyaltyProgram = getLoyaltyProgram(newUser.accessToken);
+      if ("result" in loyaltyProgram) {
+        newUser.loyaltyProgram = loyaltyProgram.result.id;
+      }
+
+      const newAccount = await new User(newUser).save();
       done(null, newAccount);
     }
   )

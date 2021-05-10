@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
-const PrivateRoute = ({ component: Component, auth, ...rest }) => (
+const PrivateRoute = ({ component: Component, auth, location, ...rest }) => (
   <Route
     {...rest}
     render={(props) => {
@@ -10,7 +10,9 @@ const PrivateRoute = ({ component: Component, auth, ...rest }) => (
         return;
       } else {
         if (!auth.isAuthenticated) {
-          return <Redirect to="/welcome" />;
+          return (
+            <Redirect to={{ pathname: "/welcome", search: location.search }} />
+          );
         } else {
           return <Component {...props} />;
         }

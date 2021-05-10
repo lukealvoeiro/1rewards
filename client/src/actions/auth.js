@@ -28,9 +28,9 @@ export const fetchLoyaltyProgram = () => async (dispatch) => {
   try {
     const res = await axios.get("/api/loyalty-program");
     if (res.status === 200) {
-      dispatch({ type: LOYALTY_PROGRAM_RECEIVED, payload: res.data.id });
+      dispatch({ type: LOYALTY_PROGRAM_RECEIVED, payload: res.data.result.id });
     }
   } catch (err) {
-    console.log(err);
+    dispatch({ type: AUTH_ERROR });
   }
 };

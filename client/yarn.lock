@@ -1131,7 +1131,7 @@
     "core-js-pure" "^3.0.0"
     "regenerator-runtime" "^0.13.4"
 
-"@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.3", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
   "integrity" "sha512-BogPQ7ciE6SYAUPtlm9tWbgI9+2AgqSam6QivMgXgAT+fKbgppaj4ZX15MHeLC1PVF5sNk70huBu20XxWOs8Cg=="
   "resolved" "https://registry.npmjs.org/@babel/runtime/-/runtime-7.12.18.tgz"
   "version" "7.12.18"
@@ -1207,6 +1207,11 @@
   "integrity" "sha512-ij4wRiunFfaJxjB0BdrYHIH8FxBJpOwNPhhAcunlmPdXudL1WQV1qoP9un6JsEBAgQH+7UXyyjh0g7jTxXK6tg=="
   "resolved" "https://registry.npmjs.org/@csstools/normalize.css/-/normalize.css-10.1.0.tgz"
   "version" "10.1.0"
+
+"@emotion/hash@^0.8.0":
+  "integrity" "sha1-u7/2iXj+/b5ozLUzvIy+HRr7VBM="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/@emotion/hash/-/hash-0.8.0.tgz"
+  "version" "0.8.0"
 
 "@eslint/eslintrc@^0.3.0":
   "integrity" "sha512-1JTKgrOKAHVivSvOYw+sJOunkBjUOvjqWk1DPja7ZFhIS2mX/4EgTT8M7eTK9jrKhL/FvXXEbQwIs3pg1xp3dg=="
@@ -1285,8 +1290,8 @@
     "slash" "^3.0.0"
 
 "@jest/core@^26.6.0", "@jest/core@^26.6.3":
-  "integrity" "sha512-xvV1kKbhfUqFVuZ8Cyo+JPpipAHHAV3kcDBftiduK8EICXmTFddryy3P7NfZt8Pv37rA9nEJBKCCkglCPt/Xjw=="
-  "resolved" "https://registry.npmjs.org/@jest/core/-/core-26.6.3.tgz"
+  "integrity" "sha1-djn8s4M9dIpGVq2lS94ZMFHkX60="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/@jest/core/-/core-26.6.3.tgz"
   "version" "26.6.3"
   dependencies:
     "@jest/console" "^26.6.2"
@@ -1350,8 +1355,8 @@
     "expect" "^26.6.2"
 
 "@jest/reporters@^26.6.2":
-  "integrity" "sha512-h2bW53APG4HvkOnVMo8q3QXa6pcaNt1HkwVsOPMBV6LD/q9oSpxNSYZQYkAnjdMjrJ86UuYeLo+aEZClV6opnw=="
-  "resolved" "https://registry.npmjs.org/@jest/reporters/-/reporters-26.6.2.tgz"
+  "integrity" "sha1-H1GLmWN6Xxgwe9Ps+SdfaIKmZ/Y="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/@jest/reporters/-/reporters-26.6.2.tgz"
   "version" "26.6.2"
   dependencies:
     "@bcoe/v8-coverage" "^0.2.3"
@@ -1401,8 +1406,8 @@
     "collect-v8-coverage" "^1.0.0"
 
 "@jest/test-sequencer@^26.6.3":
-  "integrity" "sha512-YHlVIjP5nfEyjlrSr8t/YdNfU/1XEt7c5b4OxcXCjyRhjzLYu/rO69/WHPuYcbCWkz8kAeZVZp2N2+IOLLEPGw=="
-  "resolved" "https://registry.npmjs.org/@jest/test-sequencer/-/test-sequencer-26.6.3.tgz"
+  "integrity" "sha1-mOikUQCGOIbQdCBej/3Fp+tYKxc="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/@jest/test-sequencer/-/test-sequencer-26.6.3.tgz"
   "version" "26.6.3"
   dependencies:
     "@jest/test-result" "^26.6.2"
@@ -1442,6 +1447,70 @@
     "@types/node" "*"
     "@types/yargs" "^15.0.0"
     "chalk" "^4.0.0"
+
+"@material-ui/core@^4.11.4":
+  "integrity" "sha1-T7n+Xexdz3gLaH46QM/3iyuWQKQ="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/@material-ui/core/-/core-4.11.4.tgz"
+  "version" "4.11.4"
+  dependencies:
+    "@babel/runtime" "^7.4.4"
+    "@material-ui/styles" "^4.11.4"
+    "@material-ui/system" "^4.11.3"
+    "@material-ui/types" "5.1.0"
+    "@material-ui/utils" "^4.11.2"
+    "@types/react-transition-group" "^4.2.0"
+    "clsx" "^1.0.4"
+    "hoist-non-react-statics" "^3.3.2"
+    "popper.js" "1.16.1-lts"
+    "prop-types" "^15.7.2"
+    "react-is" "^16.8.0 || ^17.0.0"
+    "react-transition-group" "^4.4.0"
+
+"@material-ui/styles@^4.11.4":
+  "integrity" "sha1-6538z8wtIIJD2YZFff8CVJevoA0="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/@material-ui/styles/-/styles-4.11.4.tgz"
+  "version" "4.11.4"
+  dependencies:
+    "@babel/runtime" "^7.4.4"
+    "@emotion/hash" "^0.8.0"
+    "@material-ui/types" "5.1.0"
+    "@material-ui/utils" "^4.11.2"
+    "clsx" "^1.0.4"
+    "csstype" "^2.5.2"
+    "hoist-non-react-statics" "^3.3.2"
+    "jss" "^10.5.1"
+    "jss-plugin-camel-case" "^10.5.1"
+    "jss-plugin-default-unit" "^10.5.1"
+    "jss-plugin-global" "^10.5.1"
+    "jss-plugin-nested" "^10.5.1"
+    "jss-plugin-props-sort" "^10.5.1"
+    "jss-plugin-rule-value-function" "^10.5.1"
+    "jss-plugin-vendor-prefixer" "^10.5.1"
+    "prop-types" "^15.7.2"
+
+"@material-ui/system@^4.11.3":
+  "integrity" "sha1-RmvBTJmGeY/TJWZZJ8lj60fMQUM="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/@material-ui/system/-/system-4.11.3.tgz"
+  "version" "4.11.3"
+  dependencies:
+    "@babel/runtime" "^7.4.4"
+    "@material-ui/utils" "^4.11.2"
+    "csstype" "^2.5.2"
+    "prop-types" "^15.7.2"
+
+"@material-ui/types@5.1.0":
+  "integrity" "sha1-76HHoLDqpMfIesA5BEXw+IsNiPI="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/@material-ui/types/-/types-5.1.0.tgz"
+  "version" "5.1.0"
+
+"@material-ui/utils@^4.11.2":
+  "integrity" "sha1-8a76fn3/Lry5fTHeUa7KsbtXVAo="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/@material-ui/utils/-/utils-4.11.2.tgz"
+  "version" "4.11.2"
+  dependencies:
+    "@babel/runtime" "^7.4.4"
+    "prop-types" "^15.7.2"
+    "react-is" "^16.8.0 || ^17.0.0"
 
 "@nodelib/fs.scandir@2.1.4":
   "integrity" "sha512-33g3pMJk3bg5nXbL/+CY6I2eJDzZAni49PfJnL5fghPTggPvBd/pFNSgJsdAgWptuFu7qq/ERvOYFlhvsLTCKA=="
@@ -1851,10 +1920,17 @@
     "hoist-non-react-statics" "^3.3.0"
     "redux" "^4.0.0"
 
-"@types/react@*":
-  "integrity" "sha1-pnxvekYNJmDpUNnMwcLxhSXCgiA="
-  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/@types/react/-/react-17.0.4.tgz"
-  "version" "17.0.4"
+"@types/react-transition-group@^4.2.0":
+  "integrity" "sha1-4aPLJ4339H8XtQgrGz2hcXC9RLE="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/@types/react-transition-group/-/react-transition-group-4.4.1.tgz"
+  "version" "4.4.1"
+  dependencies:
+    "@types/react" "*"
+
+"@types/react@*", "@types/react@^16.8.6 || ^17.0.0":
+  "integrity" "sha1-PYh1cMRIkBH3Wj/I+WW/h9CaG+o="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/@types/react/-/react-17.0.5.tgz"
+  "version" "17.0.5"
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -2798,6 +2874,11 @@
   "resolved" "https://registry.npmjs.org/base64-js/-/base64-js-1.5.1.tgz"
   "version" "1.5.1"
 
+"base64url@^3.0.1":
+  "integrity" "sha1-Y5nVcuK8P5CpqLItXbsKMtM/eI0="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/base64url/-/base64url-3.0.1.tgz"
+  "version" "3.0.1"
+
 "batch@0.6.1":
   "integrity" "sha1-3DQxT05nkxgJP8dgJyUl+UvyXBY="
   "resolved" "https://registry.npmjs.org/batch/-/batch-0.6.1.tgz"
@@ -3411,6 +3492,11 @@
     "strip-ansi" "^6.0.0"
     "wrap-ansi" "^6.2.0"
 
+"clsx@^1.0.4":
+  "integrity" "sha1-mLMTT5q73yOyZjSRrOE8XAOnMYg="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/clsx/-/clsx-1.1.1.tgz"
+  "version" "1.1.1"
+
 "co@^4.6.0":
   "integrity" "sha1-bqa989hTrlTMuOR7+gvz+QMfsYQ="
   "resolved" "https://registry.npmjs.org/co/-/co-4.6.0.tgz"
@@ -3855,6 +3941,14 @@
     "mdn-data" "2.0.4"
     "source-map" "^0.6.1"
 
+"css-vendor@^2.0.8":
+  "integrity" "sha1-5H+R070xF9SRgKPJNeYuPZ9/RJ0="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/css-vendor/-/css-vendor-2.0.8.tgz"
+  "version" "2.0.8"
+  dependencies:
+    "@babel/runtime" "^7.8.3"
+    "is-in-browser" "^1.0.2"
+
 "css-what@^3.2.1":
   "integrity" "sha512-ACUm3L0/jiZTqfzRM3Hi9Q8eZqd6IK37mMWPLz9PJxkLWllYeRf+EHUSHYEtFop2Eqytaq1FizFVh7XfBnXCDQ=="
   "resolved" "https://registry.npmjs.org/css-what/-/css-what-3.4.2.tgz"
@@ -3990,6 +4084,11 @@
   "version" "2.3.0"
   dependencies:
     "cssom" "~0.3.6"
+
+"csstype@^2.5.2":
+  "integrity" "sha1-TPMOuH4dGgBdi2UQ+VKSQT9qHA4="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/csstype/-/csstype-2.6.17.tgz"
+  "version" "2.6.17"
 
 "csstype@^3.0.2":
   "integrity" "sha1-0iZqeScp+yJ80hb7Vy9Dco4a00A="
@@ -4293,6 +4392,14 @@
   "version" "0.2.0"
   dependencies:
     "utila" "~0.4"
+
+"dom-helpers@^5.0.1":
+  "integrity" "sha1-2UAFNrK/giWtmP4FLgKUUaxA6QI="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/dom-helpers/-/dom-helpers-5.2.1.tgz"
+  "version" "5.2.1"
+  dependencies:
+    "@babel/runtime" "^7.8.7"
+    "csstype" "^3.0.2"
 
 "dom-serializer@0":
   "integrity" "sha512-2/xPb3ORsQ42nHYiSunXkDjPLBaEj/xTwUO4B7XCZQTRk7EBtTOPaygh10YAAh2OI1Qrp6NWfpAhzswj0ydt9g=="
@@ -4609,8 +4716,8 @@
     "source-map" "~0.6.1"
 
 "eslint-config-react-app@^6.0.0":
-  "integrity" "sha512-bpoAAC+YRfzq0dsTk+6v9aHm/uqnDwayNAXleMypGl6CpxI9oXXscVHo4fk3eJPIn+rsbtNetB4r/ZIidFIE8A=="
-  "resolved" "https://registry.npmjs.org/eslint-config-react-app/-/eslint-config-react-app-6.0.0.tgz"
+  "integrity" "sha1-zP+fyONrMikChEy9eRl5gr41Wg4="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/eslint-config-react-app/-/eslint-config-react-app-6.0.0.tgz"
   "version" "6.0.0"
   dependencies:
     "confusing-browser-globals" "^1.0.10"
@@ -4640,8 +4747,8 @@
     "string-natural-compare" "^3.0.1"
 
 "eslint-plugin-import@^2.22.0", "eslint-plugin-import@^2.22.1":
-  "integrity" "sha512-8K7JjINHOpH64ozkAhpT3sd+FswIZTfMZTjdx052pnWrgRCVfp8op9tbjpAk3DdUeI/Ba4C8OjdC0r90erHEOw=="
-  "resolved" "https://registry.npmjs.org/eslint-plugin-import/-/eslint-plugin-import-2.22.1.tgz"
+  "integrity" "sha1-CJbH5qDPRBCaLZe5WQPCu2iddwI="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/eslint-plugin-import/-/eslint-plugin-import-2.22.1.tgz"
   "version" "2.22.1"
   dependencies:
     "array-includes" "^3.1.1"
@@ -5626,6 +5733,18 @@
   "resolved" "https://registry.npmjs.org/hex-color-regex/-/hex-color-regex-1.1.0.tgz"
   "version" "1.1.0"
 
+"history@^4.9.0":
+  "integrity" "sha1-MzcaZeOoOyZ0NOKz87G0xYqtTPM="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/history/-/history-4.10.1.tgz"
+  "version" "4.10.1"
+  dependencies:
+    "@babel/runtime" "^7.1.2"
+    "loose-envify" "^1.2.0"
+    "resolve-pathname" "^3.0.0"
+    "tiny-invariant" "^1.0.2"
+    "tiny-warning" "^1.0.0"
+    "value-equal" "^1.0.1"
+
 "hmac-drbg@^1.0.1":
   "integrity" "sha1-0nRXAQJabHdabFRXk+1QL8DGSaE="
   "resolved" "https://registry.npmjs.org/hmac-drbg/-/hmac-drbg-1.0.1.tgz"
@@ -5635,7 +5754,7 @@
     "minimalistic-assert" "^1.0.0"
     "minimalistic-crypto-utils" "^1.0.1"
 
-"hoist-non-react-statics@^3.3.0", "hoist-non-react-statics@^3.3.2":
+"hoist-non-react-statics@^3.1.0", "hoist-non-react-statics@^3.3.0", "hoist-non-react-statics@^3.3.2":
   "integrity" "sha1-7OCsr3HWLClpwuxZ/v9CpLGoW0U="
   "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz"
   "version" "3.3.2"
@@ -5648,9 +5767,9 @@
   "version" "0.1.4"
 
 "hosted-git-info@^2.1.4":
-  "integrity" "sha512-f/wzC2QaWBs7t9IYqB4T3sR1xviIViXJRJTWBlx2Gf3g0Xi5vI7Yy4koXQ1c9OYDGHN9sBy1DQ2AB8fqZBWhUg=="
-  "resolved" "https://registry.npmjs.org/hosted-git-info/-/hosted-git-info-2.8.8.tgz"
-  "version" "2.8.8"
+  "integrity" "sha1-3/wL+aIcAiCQkPKqaUKeFBTa8/k="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/hosted-git-info/-/hosted-git-info-2.8.9.tgz"
+  "version" "2.8.9"
 
 "hpack.js@^2.1.6":
   "integrity" "sha1-h3dMCUnlE/QuhFdbPEVoH63ioLI="
@@ -5814,6 +5933,11 @@
   "resolved" "https://registry.npmjs.org/human-signals/-/human-signals-1.1.1.tgz"
   "version" "1.1.1"
 
+"hyphenate-style-name@^1.0.3":
+  "integrity" "sha1-aRh5r44iCupXUOiCfbTvYqVONh0="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/hyphenate-style-name/-/hyphenate-style-name-1.0.4.tgz"
+  "version" "1.0.4"
+
 "iconv-lite@0.4.24":
   "integrity" "sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA=="
   "resolved" "https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.4.24.tgz"
@@ -5910,6 +6034,13 @@
   "integrity" "sha1-khi5srkoojixPcT7a21XbyMUU+o="
   "resolved" "https://registry.npmjs.org/imurmurhash/-/imurmurhash-0.1.4.tgz"
   "version" "0.1.4"
+
+"indefinite-observable@^2.0.1":
+  "integrity" "sha1-V0rym/vBfrWUd5N5e93JTJ2FlAA="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/indefinite-observable/-/indefinite-observable-2.0.1.tgz"
+  "version" "2.0.1"
+  dependencies:
+    "symbol-observable" "1.2.0"
 
 "indent-string@^4.0.0":
   "integrity" "sha512-EdDDZu4A2OyIK7Lr/2zG+w5jmbuk1DVBnEwREQvBzspBJkCEbRa8GxU1lghYcaGJCnRWibjDXlq779X1/y5xwg=="
@@ -6177,6 +6308,11 @@
   dependencies:
     "is-extglob" "^2.1.1"
 
+"is-in-browser@^1.0.2", "is-in-browser@^1.1.3":
+  "integrity" "sha1-Vv9NtoOgeMYILrldrX3GLh0E+DU="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/is-in-browser/-/is-in-browser-1.1.3.tgz"
+  "version" "1.1.3"
+
 "is-module@^1.0.0":
   "integrity" "sha1-Mlj7afeMFNW4FdZkM2tM/7ZEFZE="
   "resolved" "https://registry.npmjs.org/is-module/-/is-module-1.0.0.tgz"
@@ -6331,6 +6467,11 @@
   "resolved" "https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz"
   "version" "1.0.0"
 
+"isarray@0.0.1":
+  "integrity" "sha1-ihis/Kmo9Bd+Cav8YDiTmwXR7t8="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/isarray/-/isarray-0.0.1.tgz"
+  "version" "0.0.1"
+
 "isexe@^2.0.0":
   "integrity" "sha1-6PvzdNxVb/iUehDcsFctYz8s+hA="
   "resolved" "https://registry.npmjs.org/isexe/-/isexe-2.0.0.tgz"
@@ -6404,8 +6545,8 @@
     "throat" "^5.0.0"
 
 "jest-circus@26.6.0":
-  "integrity" "sha512-L2/Y9szN6FJPWFK8kzWXwfp+FOR7xq0cUL4lIsdbIdwz3Vh6P1nrpcqOleSzr28zOtSHQNV9Z7Tl+KkuK7t5Ng=="
-  "resolved" "https://registry.npmjs.org/jest-circus/-/jest-circus-26.6.0.tgz"
+  "integrity" "sha1-fZZHsuf5IRgYafquH5CiYp/XBwU="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/jest-circus/-/jest-circus-26.6.0.tgz"
   "version" "26.6.0"
   dependencies:
     "@babel/traverse" "^7.1.0"
@@ -6431,8 +6572,8 @@
     "throat" "^5.0.0"
 
 "jest-cli@^26.6.0":
-  "integrity" "sha512-GF9noBSa9t08pSyl3CY4frMrqp+aQXFGFkf5hEPbh/pIUFYWMK6ZLTfbmadxJVcJrdRoChlWQsA2VkJcDFK8hg=="
-  "resolved" "https://registry.npmjs.org/jest-cli/-/jest-cli-26.6.3.tgz"
+  "integrity" "sha1-QxF8/vJLxM1pGhdKh5alMuE16So="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/jest-cli/-/jest-cli-26.6.3.tgz"
   "version" "26.6.3"
   dependencies:
     "@jest/core" "^26.6.3"
@@ -6450,8 +6591,8 @@
     "yargs" "^15.4.1"
 
 "jest-config@^26.6.3":
-  "integrity" "sha512-t5qdIj/bCj2j7NFVHb2nFB4aUdfucDn3JRKgrZnplb8nieAirAzRSHP8uDEd+qV6ygzg9Pz4YG7UTJf94LPSyg=="
-  "resolved" "https://registry.npmjs.org/jest-config/-/jest-config-26.6.3.tgz"
+  "integrity" "sha1-ZPQURO756wPcUdXFO3XIxx9kU0k="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/jest-config/-/jest-config-26.6.3.tgz"
   "version" "26.6.3"
   dependencies:
     "@babel/core" "^7.1.0"
@@ -6553,8 +6694,8 @@
     "fsevents" "^2.1.2"
 
 "jest-jasmine2@^26.6.3":
-  "integrity" "sha512-kPKUrQtc8aYwBV7CqBg5pu+tmYXlvFlSFYn18ev4gPFtrRzB15N2gW/Roew3187q2w2eHuu0MU9TJz6w0/nPEg=="
-  "resolved" "https://registry.npmjs.org/jest-jasmine2/-/jest-jasmine2-26.6.3.tgz"
+  "integrity" "sha1-rcPPkV3qy1ISyTufNUfNEpWPLt0="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/jest-jasmine2/-/jest-jasmine2-26.6.3.tgz"
   "version" "26.6.3"
   dependencies:
     "@babel/traverse" "^7.1.0"
@@ -6628,29 +6769,17 @@
   "version" "26.0.0"
 
 "jest-resolve-dependencies@^26.6.3":
-  "integrity" "sha512-pVwUjJkxbhe4RY8QEWzN3vns2kqyuldKpxlxJlzEYfKSvY6/bMvxoFrYYzUO1Gx28yKWN37qyV7rIoIp2h8fTg=="
-  "resolved" "https://registry.npmjs.org/jest-resolve-dependencies/-/jest-resolve-dependencies-26.6.3.tgz"
+  "integrity" "sha1-ZoCFnuXSLuXc2WH+SHH1n0x4T7Y="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/jest-resolve-dependencies/-/jest-resolve-dependencies-26.6.3.tgz"
   "version" "26.6.3"
   dependencies:
     "@jest/types" "^26.6.2"
     "jest-regex-util" "^26.0.0"
     "jest-snapshot" "^26.6.2"
 
-"jest-resolve@*":
-  "version" "26.6.0"
-  dependencies:
-    "@jest/types" "^26.6.0"
-    "chalk" "^4.0.0"
-    "graceful-fs" "^4.2.4"
-    "jest-pnp-resolver" "^1.2.2"
-    "jest-util" "^26.6.0"
-    "read-pkg-up" "^7.0.1"
-    "resolve" "^1.17.0"
-    "slash" "^3.0.0"
-
-"jest-resolve@^26.6.2":
-  "integrity" "sha512-sOxsZOq25mT1wRsfHcbtkInS+Ek7Q8jCHUB0ZUTP0tc/c41QHriU/NunqMfCUWsL4H3MHpvQD4QR9kSYhS7UvQ=="
-  "resolved" "https://registry.npmjs.org/jest-resolve/-/jest-resolve-26.6.2.tgz"
+"jest-resolve@*", "jest-resolve@^26.6.2":
+  "integrity" "sha1-o6sVFyF/RptQTxtWYDxbtUH7tQc="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/jest-resolve/-/jest-resolve-26.6.2.tgz"
   "version" "26.6.2"
   dependencies:
     "@jest/types" "^26.6.2"
@@ -6663,8 +6792,8 @@
     "slash" "^3.0.0"
 
 "jest-resolve@26.6.0":
-  "integrity" "sha512-tRAz2bwraHufNp+CCmAD8ciyCpXCs1NQxB5EJAmtCFy6BN81loFEGWKzYu26Y62lAJJe4X4jg36Kf+NsQyiStQ=="
-  "resolved" "https://registry.npmjs.org/jest-resolve/-/jest-resolve-26.6.0.tgz"
+  "integrity" "sha1-Bw/nFZr4ewPlD1LqXhfulbvuQOE="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/jest-resolve/-/jest-resolve-26.6.0.tgz"
   "version" "26.6.0"
   dependencies:
     "@jest/types" "^26.6.0"
@@ -6677,8 +6806,8 @@
     "slash" "^3.0.0"
 
 "jest-runner@^26.6.0", "jest-runner@^26.6.3":
-  "integrity" "sha512-atgKpRHnaA2OvByG/HpGA4g6CSPS/1LK0jK3gATJAoptC1ojltpmVlYC3TYgdmGp+GLuhzpH30Gvs36szSL2JQ=="
-  "resolved" "https://registry.npmjs.org/jest-runner/-/jest-runner-26.6.3.tgz"
+  "integrity" "sha1-LR/tPUbhDyM/0dvTv6o/6JJL4Vk="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/jest-runner/-/jest-runner-26.6.3.tgz"
   "version" "26.6.3"
   dependencies:
     "@jest/console" "^26.6.2"
@@ -6703,8 +6832,8 @@
     "throat" "^5.0.0"
 
 "jest-runtime@^26.6.0", "jest-runtime@^26.6.3":
-  "integrity" "sha512-lrzyR3N8sacTAMeonbqpnSka1dHNux2uk0qqDXVkMv2c/A3wYnvQ4EXuI013Y6+gSKSCxdaczvf4HF0mVXHRdw=="
-  "resolved" "https://registry.npmjs.org/jest-runtime/-/jest-runtime-26.6.3.tgz"
+  "integrity" "sha1-T2TvvPrDmDMbdLSzyC0n1AG4+is="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/jest-runtime/-/jest-runtime-26.6.3.tgz"
   "version" "26.6.3"
   dependencies:
     "@jest/console" "^26.6.2"
@@ -6744,8 +6873,8 @@
     "graceful-fs" "^4.2.4"
 
 "jest-snapshot@^26.6.0", "jest-snapshot@^26.6.2":
-  "integrity" "sha512-OLhxz05EzUtsAmOMzuupt1lHYXCNib0ECyuZ/PZOx9TrZcC8vL0x+DUG3TL+GLX3yHG45e6YGjIm0XwDc3q3og=="
-  "resolved" "https://registry.npmjs.org/jest-snapshot/-/jest-snapshot-26.6.2.tgz"
+  "integrity" "sha1-87CvGssiMxaFC9FOG+6pg3+znIQ="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/jest-snapshot/-/jest-snapshot-26.6.2.tgz"
   "version" "26.6.2"
   dependencies:
     "@babel/types" "^7.0.0"
@@ -6833,8 +6962,8 @@
     "supports-color" "^7.0.0"
 
 "jest@^26.0.0", "jest@26.6.0":
-  "integrity" "sha512-jxTmrvuecVISvKFFhOkjsWRZV7sFqdSUAd1ajOKY+/QE/aLBVstsJ/dX8GczLzwiT6ZEwwmZqtCUHLHHQVzcfA=="
-  "resolved" "https://registry.npmjs.org/jest/-/jest-26.6.0.tgz"
+  "integrity" "sha1-VGslodjIiFadu+k8rhMXSAhqSiU="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/jest/-/jest-26.6.0.tgz"
   "version" "26.6.0"
   dependencies:
     "@jest/core" "^26.6.0"
@@ -6980,6 +7109,77 @@
     "extsprintf" "1.3.0"
     "json-schema" "0.2.3"
     "verror" "1.10.0"
+
+"jss-plugin-camel-case@^10.5.1":
+  "integrity" "sha1-k9LNcEvwxK9wzED7UtdLiiVUsXA="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/jss-plugin-camel-case/-/jss-plugin-camel-case-10.6.0.tgz"
+  "version" "10.6.0"
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    "hyphenate-style-name" "^1.0.3"
+    "jss" "10.6.0"
+
+"jss-plugin-default-unit@^10.5.1":
+  "integrity" "sha1-r0eXJIaBmzdfDzqeAhNAOoS17zs="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/jss-plugin-default-unit/-/jss-plugin-default-unit-10.6.0.tgz"
+  "version" "10.6.0"
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    "jss" "10.6.0"
+
+"jss-plugin-global@^10.5.1":
+  "integrity" "sha1-PoAR92DzmcutzKfxCkhbcpxQ4+0="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/jss-plugin-global/-/jss-plugin-global-10.6.0.tgz"
+  "version" "10.6.0"
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    "jss" "10.6.0"
+
+"jss-plugin-nested@^10.5.1":
+  "integrity" "sha1-X4PFwzfTs4AEg06EJpV3FaAlFkE="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/jss-plugin-nested/-/jss-plugin-nested-10.6.0.tgz"
+  "version" "10.6.0"
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    "jss" "10.6.0"
+    "tiny-warning" "^1.0.2"
+
+"jss-plugin-props-sort@^10.5.1":
+  "integrity" "sha1-KXh581+f4hGWRIV5/uN7zeKM5rw="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/jss-plugin-props-sort/-/jss-plugin-props-sort-10.6.0.tgz"
+  "version" "10.6.0"
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    "jss" "10.6.0"
+
+"jss-plugin-rule-value-function@^10.5.1":
+  "integrity" "sha1-PBpVcjahOdAVHnCoLIEMzOHBxeo="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/jss-plugin-rule-value-function/-/jss-plugin-rule-value-function-10.6.0.tgz"
+  "version" "10.6.0"
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    "jss" "10.6.0"
+    "tiny-warning" "^1.0.2"
+
+"jss-plugin-vendor-prefixer@^10.5.1":
+  "integrity" "sha1-4fzUmTUoRokMOAhbEdvXqhxPLHg="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/jss-plugin-vendor-prefixer/-/jss-plugin-vendor-prefixer-10.6.0.tgz"
+  "version" "10.6.0"
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    "css-vendor" "^2.0.8"
+    "jss" "10.6.0"
+
+"jss@^10.5.1", "jss@10.6.0":
+  "integrity" "sha1-2S/50PIU9lyhcYWRto4Qe+R3QUk="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/jss/-/jss-10.6.0.tgz"
+  "version" "10.6.0"
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    "csstype" "^3.0.2"
+    "indefinite-observable" "^2.0.1"
+    "is-in-browser" "^1.1.3"
+    "tiny-warning" "^1.0.2"
 
 "jsx-ast-utils@^2.4.1 || ^3.0.0", "jsx-ast-utils@^3.1.0":
   "integrity" "sha512-EIsmt3O3ljsU6sot/J4E1zDRxfBNrhjyf/OKjlydwgEimQuznlM4Wv7U+ueONJMyEn1WRE0K8dhi3dVAXYT24Q=="
@@ -7212,7 +7412,7 @@
   "resolved" "https://registry.npmjs.org/loglevel/-/loglevel-1.7.1.tgz"
   "version" "1.7.1"
 
-"loose-envify@^1.1.0", "loose-envify@^1.4.0":
+"loose-envify@^1.1.0", "loose-envify@^1.2.0", "loose-envify@^1.3.1", "loose-envify@^1.4.0":
   "integrity" "sha1-ce5R+nvkyuwaY4OffmgtgTLTDK8="
   "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/loose-envify/-/loose-envify-1.4.0.tgz"
   "version" "1.4.0"
@@ -7436,6 +7636,14 @@
   "integrity" "sha1-pj9oFnOzBXH76LwlaGrnRu76mGk="
   "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/min-indent/-/min-indent-1.0.1.tgz"
   "version" "1.0.1"
+
+"mini-create-react-context@^0.4.0":
+  "integrity" "sha1-ByFxVhv9ySLaCKYMIZekl8wtHV4="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/mini-create-react-context/-/mini-create-react-context-0.4.1.tgz"
+  "version" "0.4.1"
+  dependencies:
+    "@babel/runtime" "^7.12.1"
+    "tiny-warning" "^1.0.3"
 
 "mini-css-extract-plugin@0.11.3":
   "integrity" "sha512-n9BA8LonkOkW1/zn+IbLPQmovsL0wMb9yx75fMJQZf2X1Zoec9yTZtyMePcyu19wPkmFbzZZA6fLTotpFhQsOA=="
@@ -7720,8 +7928,8 @@
   "version" "1.1.70"
 
 "normalize-package-data@^2.3.2", "normalize-package-data@^2.5.0":
-  "integrity" "sha512-/5CMN3T0R4XTj4DcGaexo+roZSdSFW/0AOOTROrjxzCG1wrWXEsGbRKevjlIL+ZDE4sZlJr5ED4YW0yqmkK+eA=="
-  "resolved" "https://registry.npmjs.org/normalize-package-data/-/normalize-package-data-2.5.0.tgz"
+  "integrity" "sha1-5m2xg4sgDB38IzIl0SyzZSDiNKg="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/normalize-package-data/-/normalize-package-data-2.5.0.tgz"
   "version" "2.5.0"
   dependencies:
     "hosted-git-info" "^2.1.4"
@@ -8201,6 +8409,13 @@
   "resolved" "https://registry.npmjs.org/path-parse/-/path-parse-1.0.6.tgz"
   "version" "1.0.6"
 
+"path-to-regexp@^1.7.0":
+  "integrity" "sha1-iHs7qdhDk+h6CgufTLdWGYtTVIo="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/path-to-regexp/-/path-to-regexp-1.8.0.tgz"
+  "version" "1.8.0"
+  dependencies:
+    "isarray" "0.0.1"
+
 "path-to-regexp@0.1.7":
   "integrity" "sha1-32BBeABfUi8V60SQ5yR6G/qmf4w="
   "resolved" "https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-0.1.7.tgz"
@@ -8309,6 +8524,11 @@
   "version" "1.6.4"
   dependencies:
     "ts-pnp" "^1.1.6"
+
+"popper.js@1.16.1-lts":
+  "integrity" "sha1-z2hHuAfaN5nYDuPW0vkN+KP1CwU="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/popper.js/-/popper.js-1.16.1-lts.tgz"
+  "version" "1.16.1-lts"
 
 "portfinder@^1.0.26":
   "integrity" "sha512-Se+2isanIcEqf2XMHjyUKskczxbPH7dQnlMjXX6+dybayyHvAf/TCgyMRlzf/B6QDhAEFOGes0pzRo3by4AbMA=="
@@ -9083,7 +9303,7 @@
     "kleur" "^3.0.3"
     "sisteransi" "^1.0.5"
 
-"prop-types@^15.7.2":
+"prop-types@^15.0.0", "prop-types@^15.6.2", "prop-types@^15.7.2":
   "integrity" "sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ=="
   "resolved" "https://registry.npmjs.org/prop-types/-/prop-types-15.7.2.tgz"
   "version" "15.7.2"
@@ -9289,7 +9509,7 @@
     "strip-ansi" "6.0.0"
     "text-table" "0.2.0"
 
-"react-dom@*", "react-dom@^17.0.2", "react-dom@>=0.16.8":
+"react-dom@*", "react-dom@^16.8.0 || ^17.0.0", "react-dom@^17.0.2", "react-dom@>=0.16.8", "react-dom@>=16.6.0":
   "integrity" "sha1-7P+2hF462Nv83EmPDQqTlzZQLCM="
   "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/react-dom/-/react-dom-17.0.2.tgz"
   "version" "17.0.2"
@@ -9303,7 +9523,7 @@
   "resolved" "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-6.0.9.tgz"
   "version" "6.0.9"
 
-"react-is@^16.13.1", "react-is@^16.7.0", "react-is@^16.8.1":
+"react-is@^16.13.1", "react-is@^16.6.0", "react-is@^16.7.0", "react-is@^16.8.0 || ^17.0.0", "react-is@^16.8.1":
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   "version" "16.13.1"
@@ -9340,6 +9560,35 @@
   "integrity" "sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg=="
   "resolved" "https://registry.npmjs.org/react-refresh/-/react-refresh-0.8.3.tgz"
   "version" "0.8.3"
+
+"react-router-dom@^5.2.0":
+  "integrity" "sha1-nmWk0MReEyieZsexfH4XXQ6hVmI="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/react-router-dom/-/react-router-dom-5.2.0.tgz"
+  "version" "5.2.0"
+  dependencies:
+    "@babel/runtime" "^7.1.2"
+    "history" "^4.9.0"
+    "loose-envify" "^1.3.1"
+    "prop-types" "^15.6.2"
+    "react-router" "5.2.0"
+    "tiny-invariant" "^1.0.2"
+    "tiny-warning" "^1.0.0"
+
+"react-router@5.2.0":
+  "integrity" "sha1-Qk51ZByodH+/duXsyml4GqN+opM="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/react-router/-/react-router-5.2.0.tgz"
+  "version" "5.2.0"
+  dependencies:
+    "@babel/runtime" "^7.1.2"
+    "history" "^4.9.0"
+    "hoist-non-react-statics" "^3.1.0"
+    "loose-envify" "^1.3.1"
+    "mini-create-react-context" "^0.4.0"
+    "path-to-regexp" "^1.7.0"
+    "prop-types" "^15.6.2"
+    "react-is" "^16.6.0"
+    "tiny-invariant" "^1.0.2"
+    "tiny-warning" "^1.0.0"
 
 "react-scripts@4.0.3":
   "integrity" "sha1-scr+18P6YD52KLoPGHeHlky100U="
@@ -9412,7 +9661,17 @@
   "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/react-square-payment-form/-/react-square-payment-form-0.7.2.tgz"
   "version" "0.7.2"
 
-"react@*", "react@^16.8.3 || ^17", "react@^17.0.2", "react@>= 16", "react@>=0.16.8", "react@17.0.2":
+"react-transition-group@^4.4.0":
+  "integrity" "sha1-Y4aPkyWjjqXulTXYKDJ/hXczRck="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/react-transition-group/-/react-transition-group-4.4.1.tgz"
+  "version" "4.4.1"
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+    "dom-helpers" "^5.0.1"
+    "loose-envify" "^1.4.0"
+    "prop-types" "^15.6.2"
+
+"react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.3 || ^17", "react@^17.0.2", "react@>= 16", "react@>=0.16.8", "react@>=15", "react@>=16.6.0", "react@17.0.2":
   "integrity" "sha1-0LXMUW0p6z7uOD91tihkz7aAADc="
   "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
@@ -9429,8 +9688,8 @@
     "read-pkg" "^2.0.0"
 
 "read-pkg-up@^7.0.1":
-  "integrity" "sha512-zK0TB7Xd6JpCLmlLmufqykGE+/TlOePD6qKClNW7hHDKFh/J7/7gCWGR7joEQEW1bKq3a3yUZSObOoWLFQ4ohg=="
-  "resolved" "https://registry.npmjs.org/read-pkg-up/-/read-pkg-up-7.0.1.tgz"
+  "integrity" "sha1-86YTV1hFlzOuK5VjgFbhhU5+9Qc="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/read-pkg-up/-/read-pkg-up-7.0.1.tgz"
   "version" "7.0.1"
   dependencies:
     "find-up" "^4.1.0"
@@ -9447,8 +9706,8 @@
     "path-type" "^2.0.0"
 
 "read-pkg@^5.2.0":
-  "integrity" "sha512-Ug69mNOpfvKDAc2Q8DRpMjjzdtrnv9HcSMX+4VsZxD1aZ6ZzrIE7rlzXBtWTyhULSMKg076AW6WR5iZpD0JiOg=="
-  "resolved" "https://registry.npmjs.org/read-pkg/-/read-pkg-5.2.0.tgz"
+  "integrity" "sha1-e/KVQ4yloz5WzTDgU7NO5yUMk8w="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/read-pkg/-/read-pkg-5.2.0.tgz"
   "version" "5.2.0"
   dependencies:
     "@types/normalize-package-data" "^2.4.0"
@@ -9744,6 +10003,11 @@
   "integrity" "sha512-qYg9KP24dD5qka9J47d0aVky0N+b4fTU89LN9iDnjB5waksiC49rvMB0PrUJQGoTmH50XPiqOvAjDfaijGxYZw=="
   "resolved" "https://registry.npmjs.org/resolve-from/-/resolve-from-5.0.0.tgz"
   "version" "5.0.0"
+
+"resolve-pathname@^3.0.0":
+  "integrity" "sha1-mdAiJNPPJjaJvsuzk7xWAxMCXc0="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/resolve-pathname/-/resolve-pathname-3.0.0.tgz"
+  "version" "3.0.0"
 
 "resolve-url-loader@^3.1.2":
   "integrity" "sha512-QEb4A76c8Mi7I3xNKXlRKQSlLBwjUV/ULFMP+G7n3/7tJZ8MG5wsZ3ucxP1Jz8Vevn6fnJsxDx9cIls+utGzPQ=="
@@ -10767,6 +11031,11 @@
     "unquote" "~1.1.1"
     "util.promisify" "~1.0.0"
 
+"symbol-observable@1.2.0":
+  "integrity" "sha1-wiaIrtTqs83C3+rLtWFmBWCgCAQ="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/symbol-observable/-/symbol-observable-1.2.0.tgz"
+  "version" "1.2.0"
+
 "symbol-tree@^3.2.4":
   "integrity" "sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw=="
   "resolved" "https://registry.npmjs.org/symbol-tree/-/symbol-tree-3.2.4.tgz"
@@ -10912,6 +11181,16 @@
   "integrity" "sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q="
   "resolved" "https://registry.npmjs.org/timsort/-/timsort-0.3.0.tgz"
   "version" "0.3.0"
+
+"tiny-invariant@^1.0.2":
+  "integrity" "sha1-Y0xfjv3CdxS384bDXmdgmR0jCHU="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/tiny-invariant/-/tiny-invariant-1.1.0.tgz"
+  "version" "1.1.0"
+
+"tiny-warning@^1.0.0", "tiny-warning@^1.0.2", "tiny-warning@^1.0.3":
+  "integrity" "sha1-lKMNtFPfTGQ9D9VmBg1gqHXYR1Q="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/tiny-warning/-/tiny-warning-1.0.3.tgz"
+  "version" "1.0.3"
 
 "tmpl@1.0.x":
   "integrity" "sha1-I2QN17QtAEM5ERQIIOXPRA5SHdE="
@@ -11342,6 +11621,11 @@
     "spdx-correct" "^3.0.0"
     "spdx-expression-parse" "^3.0.0"
 
+"value-equal@^1.0.1":
+  "integrity" "sha1-Hgt5THNMXAyt4XnEN9NW2TGjTWw="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/value-equal/-/value-equal-1.0.1.tgz"
+  "version" "1.0.1"
+
 "vary@~1.1.2":
   "integrity" "sha1-IpnwLG3tMNSllhsLn3RSShj2NPw="
   "resolved" "https://registry.npmjs.org/vary/-/vary-1.1.2.tgz"
@@ -11413,9 +11697,9 @@
     "minimalistic-assert" "^1.0.0"
 
 "web-vitals@^1.0.1":
-  "integrity" "sha1-LfU14zVft/vjR4e0S3NuJw5Tk3c="
-  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/web-vitals/-/web-vitals-1.1.1.tgz"
-  "version" "1.1.1"
+  "integrity" "sha1-BlNTCBaJhgliOaqEcW5otMaubRw="
+  "resolved" "https://artifactory.global.square/artifactory/api/npm/square-npm/web-vitals/-/web-vitals-1.1.2.tgz"
+  "version" "1.1.2"
 
 "webidl-conversions@^5.0.0":
   "integrity" "sha512-VlZwKPCkYKxQgeSbH5EyngOmRp7Ww7I9rQLERETtf5ofd9pGeswWiOtogpEO850jziPRarreGxn5QIiTqpb2wA=="

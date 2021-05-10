@@ -11,6 +11,7 @@ module.exports = (app) => {
     "/auth/square/callback",
     passport.authenticate("square"),
     (req, res) => {
+      console.log(req);
       res.redirect("/");
     }
   );

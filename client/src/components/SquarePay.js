@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import axios from "axios";
 
-const SquarePay = ({ price, auth, phoneNumber }) => {
+const SquarePay = ({ price, auth, phoneNumber, orderId }) => {
   const [errorMessages, setErrorMessages] = useState([]);
 
   const cardNonceResponseReceived = async (
@@ -30,6 +30,8 @@ const SquarePay = ({ price, auth, phoneNumber }) => {
         buyerVerificationToken: buyerVerificationToken,
         accessToken: auth.user.accessToken,
         amount: price * 100,
+        phoneNumber: phoneNumber,
+        orderId: orderId,
       });
       console.log(response);
     } catch (error) {

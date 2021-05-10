@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import Input from "react-phone-number-input/input";
+import { withRouter } from "react-router-dom";
+import { compose } from "redux";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import SquarePay from "./SquarePay";
 import SquareLoyalty from "./SquareLoyalty";
 
-// TODO: determine if we actually need to mapStateToProps here
-const Payment = ({ auth }) => {
+const Payment = ({ auth, location }) => {
   const [price, setPrice] = useState(1);
   const [phoneNumber, setPhoneNumber] = useState();
+  let orderId = localStorage.getItem("order_id");
+  if (orderId) {
+    localStorage.removeItem("order_id");
+  } else {
+    orderId = new URLSearchParams(location.search).get("order_id");
+  }
+
   const paymentForm = (
     <React.Fragment>
       <form>
@@ -24,7 +32,8 @@ const Payment = ({ auth }) => {
         Phone Number:
         <Input country="US" value={phoneNumber} onChange={setPhoneNumber} />
       </form>
-      <SquarePay price={price} phoneNumber={phoneNumber} />
+      orderId: {orderId}
+      <SquarePay price={price} phoneNumber={phoneNumber} orderId={orderId} />
     </React.Fragment>
   );
 
@@ -39,4 +48,4 @@ function mapStateToProps(state) {
   return { auth: state.auth };
 }
 
-export default connect(mapStateToProps, actions)(Payment);
+export default compose(withRouter, connect(mapStateToProps, actions))(Payment);
