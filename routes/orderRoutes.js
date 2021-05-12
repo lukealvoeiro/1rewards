@@ -1,6 +1,12 @@
-const { uuidv4, getLocationId } = require("../utils/squareUtils");
+const {
+  uuidv4,
+  getLocationId,
+  retrieveOrder,
+} = require("../utils/squareUtils");
 const { ApiError, Environment, Client } = require("square");
 const requireLogin = require("../middlewares/requireLogin");
+const JSONBig = require("json-bigint");
+const { request } = require("express");
 
 module.exports = (app) => {
   app.get("/api/new-order", requireLogin, async (req, res) => {
@@ -14,7 +20,6 @@ module.exports = (app) => {
 
       const locationId = await getLocationId(client);
 
-      const ordersApi = client.ordersApi;
       const newOrder = {
         order: {
           locationId: locationId,
@@ -32,11 +37,38 @@ module.exports = (app) => {
         },
         idempotencyKey: uuidv4(),
       };
-      const newOrderId = await (await ordersApi.createOrder(newOrder)).result
-        .order.id;
+      const newOrderId = await (
+        await client.ordersApi.createOrder(newOrder)
+      ).result.order.id;
       res.redirect(`/?order_id=${newOrderId}`);
     } catch (err) {
       console.log(err);
+    }
+  });
+
+  app.get("/api/retrieve-order", requireLogin, async (req, res) => {
+    try {
+      const requestParams = req.query;
+      const client = new Client({
+        environment: Environment.Sandbox,
+        accessToken: req.user.accessToken,
+      });
+      console.log(requestParams.orderId);
+      const order = await retrieveOrder(client, requestParams.orderId);
+      console.log(order);
+      res.status(200).send(JSONBig.parse(JSONBig.stringify(order)));
+    } catch (error) {
+      console.log(error);
+      let errorResult = null;
+      if (error instanceof ApiError) {
+        errorResult = error.errors;
+      } else {
+        errorResult = error;
+      }
+      res.status(500).json({
+        title: "Failure",
+        error: errorResult,
+      });
     }
   });
 };

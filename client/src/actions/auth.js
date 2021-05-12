@@ -4,6 +4,7 @@ import {
   AUTH_ERROR,
   LOGOUT_USER,
   LOYALTY_PROGRAM_RECEIVED,
+  ORDER_LOADED,
 } from "./types";
 
 export const fetchUser = () => async (dispatch) => {
@@ -28,9 +29,21 @@ export const fetchLoyaltyProgram = () => async (dispatch) => {
   try {
     const res = await axios.get("/api/loyalty-program");
     if (res.status === 200) {
-      dispatch({ type: LOYALTY_PROGRAM_RECEIVED, payload: res.data.result.id });
+      dispatch({ type: LOYALTY_PROGRAM_RECEIVED, payload: res.data });
     }
   } catch (err) {
     dispatch({ type: AUTH_ERROR });
+  }
+};
+
+export const fetchOrder = (orderId) => async (dispatch) => {
+  try {
+    const res = await axios.get("/api/retrieve-order", {
+      params: { orderId: orderId },
+    });
+    dispatch({ type: ORDER_LOADED, payload: res.data });
+    console.log(res);
+  } catch (error) {
+    console.log(error);
   }
 };

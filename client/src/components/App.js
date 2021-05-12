@@ -1,16 +1,12 @@
 import React, { useEffect } from "react";
 import PrivateRoute from "./PrivateRoute";
-import {
-  BrowserRouter,
-  Route,
-  Switch,
-  useLocation,
-  Link,
-} from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
-import Payment from "./Payment";
+import Landing from "./Landing";
 import Welcome from "./Welcome";
+import Header from "./Header";
 import * as actions from "../actions";
+import { Container } from "@material-ui/core";
 
 const App = ({ fetchUser }) => {
   useEffect(() => {
@@ -19,12 +15,14 @@ const App = ({ fetchUser }) => {
 
   return (
     <BrowserRouter>
-      <h1>Header</h1>
-      <Switch>
-        <PrivateRoute exact path="/" component={Payment} />
+      <Header />
+      <Container>
+        <Switch>
+          <PrivateRoute exact path="/" component={Landing} />
 
-        <Route exact path="/welcome" component={Welcome} />
-      </Switch>
+          <Route exact path="/welcome" component={Welcome} />
+        </Switch>
+      </Container>
     </BrowserRouter>
   );
 };

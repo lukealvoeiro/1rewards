@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const OAuth2Strategy = require("passport-oauth2");
 const keys = require("../config/keys");
 const { getLoyaltyProgram } = require("../utils/squareUtils");
+const { Environment, Client } = require("square");
 const User = mongoose.model("users");
 
 passport.serializeUser((user, done) => {
@@ -41,12 +42,15 @@ passport.use(
       if (existingAccount) {
         return done(null, existingAccount);
       }
-
-      let newUser = { accessToken: accessToken };
-      const loyaltyProgram = getLoyaltyProgram(newUser.accessToken);
-      if ("result" in loyaltyProgram) {
-        newUser.loyaltyProgram = loyaltyProgram.result.id;
-      }
+      const client = new Client({
+        environment: Environment.Sandbox,
+        accessToken: accessToken,
+      });
+      let newUser = {
+        accessToken: accessToken,
+      };
+      // const loyaltyProgramId = getLoyaltyProgram(client);
+      // if (loyaltyProgramId) newUser.loyaltyProgram = loyaltyProgramId;
 
       const newAccount = await new User(newUser).save();
       done(null, newAccount);

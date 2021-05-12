@@ -1,11 +1,7 @@
 import React from "react";
 
 const CreateOrder = () => {
-  const fetchOrder = () => {
-    // get order id
-    // switch route to go back to payments
-  };
-  return <button onClick={() => fetchOrder()}></button>;
+  return <a href="/api/new-order">Create Order</a>;
 };
 
 export default CreateOrder;

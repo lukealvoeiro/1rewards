@@ -9,29 +9,39 @@ const uuidv4 = () => {
   });
 };
 
-const getLoyaltyProgram = async (accessToken) => {
-  const client = new Client({
-    environment: Environment.Sandbox,
-    accessToken: accessToken,
+const getLoyaltyProgram = async (client) => {
+  const { result } = await client.loyaltyApi.retrieveLoyaltyProgram("main");
+  return result.program.id;
+};
+
+const getBuyerLoyaltyAccount = async (client, phoneNumber) => {
+  let { result } = await client.loyaltyApi.searchLoyaltyAccounts({
+    query: {
+      mappings: [
+        {
+          phoneNumber: phoneNumber,
+        },
+      ],
+    },
   });
-  try {
-    const { result } = await client.loyaltyApi.retrieveLoyaltyProgram("main");
-    return {
-      title: "Successfully retrieved seller's loyalty program",
-      result: result.program,
-    };
-  } catch (error) {
-    let errorResult = null;
-    if (error instanceof ApiError) {
-      errorResult = error.errors;
-    } else {
-      errorResult = error;
-    }
-    return {
-      title: "Failed to get loyalty program",
-      error: errorResult,
-    };
-  }
+  return result.loyaltyAccounts[0];
+};
+
+const createBuyerLoyaltyAccount = async (
+  client,
+  phoneNumber,
+  loyaltyProgramId
+) => {
+  let { result } = await client.loyaltyApi.createLoyaltyAccount({
+    loyaltyAccount: {
+      mapping: {
+        phoneNumber: phoneNumber,
+      },
+      programId: loyaltyProgramId,
+    },
+    idempotencyKey: uuidv4(),
+  });
+  return result.loyaltyAccount;
 };
 
 const getLocationId = async (client) => {
@@ -40,4 +50,46 @@ const getLocationId = async (client) => {
   return locationId;
 };
 
-exports = module.exports = { uuidv4, getLoyaltyProgram, getLocationId };
+const accumulateLoyaltyPoints = async (
+  client,
+  orderId,
+  locationId,
+  buyerLoyaltyAccountId
+) => {
+  console.log(orderId);
+  const { result } = await client.loyaltyApi.accumulateLoyaltyPoints(
+    buyerLoyaltyAccountId,
+    {
+      accumulatePoints: {
+        orderId: orderId,
+      },
+      idempotencyKey: uuidv4(),
+      locationId: locationId,
+    }
+  );
+  console.log(result);
+  return result;
+};
+
+const retrieveLoyaltyProgram = async (client, loyaltyProgramId) => {
+  const { result } = await client.loyaltyApi.retrieveLoyaltyProgram(
+    loyaltyProgramId
+  );
+  return result;
+};
+
+const retrieveOrder = async (client, orderId) => {
+  const { result } = await client.ordersApi.retrieveOrder(orderId);
+  return result.order;
+};
+
+exports = module.exports = {
+  uuidv4,
+  getLocationId,
+  getLoyaltyProgram,
+  createBuyerLoyaltyAccount,
+  getBuyerLoyaltyAccount,
+  accumulateLoyaltyPoints,
+  retrieveLoyaltyProgram,
+  retrieveOrder,
+};
