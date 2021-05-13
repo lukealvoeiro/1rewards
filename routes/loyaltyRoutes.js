@@ -98,7 +98,6 @@ module.exports = (app) => {
       }
 
       const loyaltyProgram = await retrieveLoyaltyProgram(client, programId);
-      console.log(loyaltyProgram);
       const discountAvailable =
         buyer.balance > loyaltyProgram.rewardTiers[0].points;
       res.status(200).send({

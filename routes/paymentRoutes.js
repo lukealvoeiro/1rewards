@@ -6,14 +6,20 @@ const {
   createBuyerLoyaltyAccount,
   getBuyerLoyaltyAccount,
   accumulateLoyaltyPoints,
+  createPayment,
+  payOrder,
+  calculateLoyaltyPoints,
+  adjustLoyaltyPoints,
+  createLoyaltyReward,
 } = require("../utils/squareUtils");
 const _ = require("lodash");
 const requireLogin = require("../middlewares/requireLogin");
+const mongoose = require("mongoose");
+const Buyer = mongoose.model("buyers");
 
 module.exports = (app) => {
   app.post("/api/process-payment", requireLogin, async (req, res) => {
     const requestParams = req.body;
-    console.log("requestParams --> ", requestParams);
     const client = new Client({
       environment: Environment.Sandbox,
       accessToken: requestParams.accessToken,
@@ -21,41 +27,61 @@ module.exports = (app) => {
 
     try {
       // look up phone number to see if customer has a loyalty account
-      let buyerLoyaltyAccount = await getBuyerLoyaltyAccount(
-        client,
-        requestParams.phoneNumber
-      );
+      let buyer = await Buyer.findOne({
+        phoneNumber: requestParams.phoneNumber,
+      });
 
-      // TODO: pay for order, only if it is > 0.
-      // create payment
-      const paymentRequestBody = {
-        sourceId: requestParams.nonce,
-        amountMoney: {
-          amount: requestParams.amount,
-          currency: "USD",
-        },
-        idempotencyKey: uuidv4(),
-      };
-      const paymentResponse = await client.paymentsApi.createPayment(
-        paymentRequestBody
-      );
+      const buyerLoyaltyAccountId = buyer.loyaltyPrograms.find(
+        (obj) => obj.loyaltyProgramId === req.user.loyaltyProgram
+      ).accountId;
 
       // get location id
       const locationId = await getLocationId(client);
-      console.log(locationId);
 
-      // add loyalty points to user
-      const accumulated = await accumulateLoyaltyPoints(
-        client,
-        requestParams.orderId,
-        locationId,
-        buyerLoyaltyAccount.id
-      );
-      console.log(accumulated);
+      if (requestParams.discount) {
+        let newLoyaltyPoints = await adjustLoyaltyPoints(
+          client,
+          buyerLoyaltyAccountId,
+          100
+        );
+        buyer.balance -= 100;
+        buyer = await buyer.save();
+
+        let loyaltyReward = await createLoyaltyReward(
+          client,
+          buyerLoyaltyAccountId,
+          requestParams.rewardTierId,
+          requestParams.orderId
+        );
+      }
+
+      if (requestParams.price > 0) {
+        let payment = await createPayment(
+          client,
+          requestParams.nonce,
+          requestParams.price,
+          requestParams.orderId
+        );
+      } else {
+        let order = await payOrder(client, requestParams.orderId);
+      }
+
+      if (requestParams.price > 0) {
+        let loyaltyPoints = await calculateLoyaltyPoints(
+          client,
+          req.user.loyaltyProgram,
+          requestParams.orderId
+        );
+        // add loyalty points to buyer
+        if (loyaltyPoints > 0) {
+          buyer.balance += loyaltyPoints;
+          buyer = await buyer.save();
+        }
+      }
 
       res.status(200).json({
         title: "Payment Successful",
-        result: JSONBig.parse(JSONBig.stringify(paymentResponse.result)),
+        balance: buyer.balance,
       });
     } catch (error) {
       console.log(error);

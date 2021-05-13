@@ -25,13 +25,13 @@ function ProductDetails({ order, discount }) {
           </Typography>
         </ListItem>
       ))}
-      {discount ? (
+      {discount.discountAvailable ? (
         <ListItem className={classes.listItem}>
           <ListItemText>
             <i>Loyalty Discount</i>
           </ListItemText>
           <Typography variant="body2">
-            <i>-{legiblePrice(discount)}</i>
+            <i>-{legiblePrice(discount.amount)}</i>
           </Typography>
         </ListItem>
       ) : null}
@@ -40,7 +40,7 @@ function ProductDetails({ order, discount }) {
           <b>Total</b>
         </ListItemText>
         <Typography variant="subtitle1" className={classes.total}>
-          {legiblePrice(Math.max(order.totalMoney.amount - discount, 0))}
+          {legiblePrice(Math.max(order.totalMoney.amount - discount.amount, 0))}
         </Typography>
       </ListItem>
     </List>

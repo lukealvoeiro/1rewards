@@ -16,7 +16,7 @@ import { useFormikContext } from "formik";
 
 const SquareFormPayment = ({ auth, order, discount }) => {
   const [errorMessages, setErrorMessages] = useState([]);
-  const price = order.totalMoney.amount > 0 ? order.totalMoney.amount : 0;
+  const price = Math.max(order.totalMoney.amount - discount.amount, 0);
   const { values: formValues } = useFormikContext();
   const cardNonceResponseReceived = async (
     errors,
@@ -38,6 +38,8 @@ const SquareFormPayment = ({ auth, order, discount }) => {
         phoneNumber: formValues.phoneNumber,
         orderId: order.id,
         price: price,
+        discount: discount.applied ? true : false,
+        rewardTierId: discount.rewardTierId,
       });
       console.log(response);
     } catch (error) {
@@ -47,7 +49,7 @@ const SquareFormPayment = ({ auth, order, discount }) => {
 
   const createVerificationDetails = (phoneNumber) => {
     return {
-      amount: "100.00",
+      amount: Math.max(order.totalMoney.amount - discount, 0).toString(),
       currencyCode: "USD",
       intent: "CHARGE",
       billingContact: {
@@ -86,9 +88,7 @@ const SquareFormPayment = ({ auth, order, discount }) => {
             <CreditCardCVVInput />
           </div>
         </fieldset>
-        <PaymentButton
-          price={legiblePrice(Math.max(order.totalMoney.amount - discount, 0))}
-        />
+        <PaymentButton price={legiblePrice(price)} />
       </SquarePaymentForm>
       <div className="sq-error-message">
         {errorMessages.map((errorMessage) => (

@@ -13,7 +13,7 @@ function ReviewOrder({ applyDiscount }) {
 
   const [open, setOpen] = React.useState(false);
   const [discounts, setDiscounts] = React.useState({});
-
+  console.log(discounts);
   useEffect(() => {
     async function fetchDiscounts() {
       const res = await axios.get("/api/eligible-rewards", {
@@ -34,11 +34,11 @@ function ReviewOrder({ applyDiscount }) {
 
   const handleDiscount = () => {
     setOpen(false);
-    applyDiscount(1000);
+    applyDiscount(discounts);
   };
 
   function _renderDiscountButton() {
-    if (false && (!discounts || !discounts.discountAvailable)) {
+    if (!discounts.discountAvailable) {
       return null;
     } else {
       return (

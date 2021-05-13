@@ -2,7 +2,7 @@ import { ORDER_LOADED, DISCOUNT_APPLIED } from "../actions/types";
 
 const initialState = {
   order: null,
-  discount: 0,
+  discount: { amount: 0, applied: false },
 };
 
 export default function transactionReducers(state = initialState, action) {
@@ -13,6 +13,7 @@ export default function transactionReducers(state = initialState, action) {
         order: action.payload,
       };
     case DISCOUNT_APPLIED:
+      console.log(action.payload);
       return {
         ...state,
         discount: action.payload,

@@ -56,7 +56,6 @@ const accumulateLoyaltyPoints = async (
   locationId,
   buyerLoyaltyAccountId
 ) => {
-  console.log(orderId);
   const { result } = await client.loyaltyApi.accumulateLoyaltyPoints(
     buyerLoyaltyAccountId,
     {
@@ -89,6 +88,68 @@ const retrieveOrder = async (client, orderId) => {
   return result.order;
 };
 
+const payOrder = async (client, orderId, paymentId = null) => {
+  let requestBody = {
+    idempotencyKey: uuidv4(),
+  };
+  if (paymentId) {
+    requestBody.paymentIds = [paymentId];
+  }
+  const { result } = await client.ordersApi.payOrder(orderId, requestBody);
+  return result;
+};
+
+const createPayment = async (client, nonce, price, orderId) => {
+  const paymentRequestBody = {
+    sourceId: nonce,
+    amountMoney: {
+      amount: price,
+      currency: "USD",
+    },
+    orderId: orderId,
+    idempotencyKey: uuidv4(),
+  };
+  const { result } = await client.paymentsApi.createPayment(paymentRequestBody);
+  return result.payment;
+};
+
+const calculateLoyaltyPoints = async (client, programId, orderId) => {
+  const { result } = await client.loyaltyApi.calculateLoyaltyPoints(programId, {
+    orderId: orderId,
+  });
+  return result.points;
+};
+
+const adjustLoyaltyPoints = async (client, loyaltyAccountId, points) => {
+  const { result } = await client.loyaltyApi.adjustLoyaltyPoints(
+    loyaltyAccountId,
+    {
+      idempotencyKey: uuidv4(),
+      adjustPoints: {
+        points: points,
+      },
+    }
+  );
+  return result;
+};
+
+const createLoyaltyReward = async (
+  client,
+  loyaltyAccountId,
+  rewardTierId,
+  orderId
+) => {
+  const { result } = await client.loyaltyApi.createLoyaltyReward({
+    reward: {
+      loyaltyAccountId: loyaltyAccountId,
+      rewardTierId: rewardTierId,
+      orderId: orderId,
+    },
+    idempotencyKey: uuidv4(),
+  });
+  return result;
+};
+
 exports = module.exports = {
   uuidv4,
   getLocationId,
@@ -99,4 +160,9 @@ exports = module.exports = {
   retrieveLoyaltyProgram,
   retrieveOrder,
   retrieveLoyaltyAccount,
+  payOrder,
+  createPayment,
+  calculateLoyaltyPoints,
+  adjustLoyaltyPoints,
+  createLoyaltyReward,
 };

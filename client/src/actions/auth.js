@@ -49,6 +49,8 @@ export const fetchOrder = (orderId) => async (dispatch) => {
   }
 };
 
-export const applyDiscount = (discountAmount) => (dispatch) => {
-  dispatch({ type: DISCOUNT_APPLIED, payload: discountAmount });
+export const applyDiscount = (discount) => (dispatch) => {
+  discount.amount = 1000;
+  discount.applied = true;
+  dispatch({ type: DISCOUNT_APPLIED, payload: discount });
 };

@@ -29,7 +29,7 @@ module.exports = (app) => {
               name: "String cheese",
               quantity: "1",
               basePriceMoney: {
-                amount: 20,
+                amount: 100,
                 currency: "USD",
               },
             },

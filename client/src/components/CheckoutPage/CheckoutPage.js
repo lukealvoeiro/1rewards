@@ -70,46 +70,44 @@ export default function CheckoutPage() {
         ))}
       </Stepper>
       <React.Fragment>
-        {activeStep === 2 ? (
-          _renderStepContent(activeStep)
-        ) : (
-          <Formik
-            initialValues={formInitialValues}
-            validationSchema={currentValidationSchema}
-            onSubmit={_handleSubmit}
-          >
-            {({ isSubmitting }) => (
-              <Form id={formId}>
-                {_renderStepContent(activeStep)}
+        <Formik
+          initialValues={formInitialValues}
+          validationSchema={currentValidationSchema}
+          onSubmit={_handleSubmit}
+        >
+          {activeStep === 2
+            ? _renderStepContent(activeStep)
+            : ({ isSubmitting }) => (
+                <Form id={formId}>
+                  {_renderStepContent(activeStep)}
 
-                <div className={classes.buttons}>
-                  {activeStep !== 0 && (
-                    <Button onClick={_handleBack} className={classes.button}>
-                      Back
-                    </Button>
-                  )}
-                  <div className={classes.wrapper}>
-                    <Button
-                      disabled={isSubmitting}
-                      type="submit"
-                      variant="contained"
-                      color="primary"
-                      className={classes.button}
-                    >
-                      {isLastStep ? "Pay" : "Next"}
-                    </Button>
-                    {isSubmitting && (
-                      <CircularProgress
-                        size={24}
-                        className={classes.buttonProgress}
-                      />
+                  <div className={classes.buttons}>
+                    {activeStep !== 0 && (
+                      <Button onClick={_handleBack} className={classes.button}>
+                        Back
+                      </Button>
                     )}
+                    <div className={classes.wrapper}>
+                      <Button
+                        disabled={isSubmitting}
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                        className={classes.button}
+                      >
+                        {isLastStep ? "Pay" : "Next"}
+                      </Button>
+                      {isSubmitting && (
+                        <CircularProgress
+                          size={24}
+                          className={classes.buttonProgress}
+                        />
+                      )}
+                    </div>
                   </div>
-                </div>
-              </Form>
-            )}
-          </Formik>
-        )}
+                </Form>
+              )}
+        </Formik>
       </React.Fragment>
     </React.Fragment>
   );
