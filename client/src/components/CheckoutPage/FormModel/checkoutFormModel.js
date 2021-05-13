@@ -1,4 +1,4 @@
-export default {
+const form = {
   formId: "checkoutForm",
   formField: {
     firstName: {
@@ -41,3 +41,5 @@ export default {
     },
   },
 };
+
+export default form;

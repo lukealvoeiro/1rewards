@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import axios from "axios";
 import * as actions from "../actions";
 import SquareLoyalty from "./SquareLoyalty";
 import { Card, CardContent, makeStyles } from "@material-ui/core";
 import CheckoutPage from "./CheckoutPage/CheckoutPage";
 import CreateOrder from "./CreateOrder";
-import SquarePaymentForm from "react-square-payment-form";
 
 const useStyles = makeStyles((theme) => ({
   paymentForm: {

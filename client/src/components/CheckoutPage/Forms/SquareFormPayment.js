@@ -8,25 +8,16 @@ import {
 } from "react-square-payment-form";
 import "react-square-payment-form/lib/default.css";
 import { connect } from "react-redux";
-import * as actions from "../actions";
+import * as actions from "../../../actions";
 import axios from "axios";
-import { makeStyles } from "@material-ui/core/styles";
+import { PaymentButton } from "../../FormControls";
+import legiblePrice from "../../../utils/money";
+import { useFormikContext } from "formik";
 
-const useStyles = makeStyles({
-  root: {
-    background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
-    border: 0,
-    borderRadius: 3,
-    boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
-    color: "white",
-    height: 48,
-    padding: "0 30px",
-  },
-});
-
-const SquareFormPayment = (props, { auth }) => {
+const SquareFormPayment = ({ auth, order, discount }) => {
   const [errorMessages, setErrorMessages] = useState([]);
-
+  const price = order.totalMoney.amount > 0 ? order.totalMoney.amount : 0;
+  const { values: formValues } = useFormikContext();
   const cardNonceResponseReceived = async (
     errors,
     nonce,
@@ -44,8 +35,9 @@ const SquareFormPayment = (props, { auth }) => {
         nonce: nonce,
         buyerVerificationToken: buyerVerificationToken,
         accessToken: auth.user.accessToken,
-        phoneNumber: "+13312449199",
-        orderId: "",
+        phoneNumber: formValues.phoneNumber,
+        orderId: order.id,
+        price: price,
       });
       console.log(response);
     } catch (error) {
@@ -72,14 +64,13 @@ const SquareFormPayment = (props, { auth }) => {
   };
 
   return (
-    <React.Fragment>
+    <div style={{ maxWidth: "380px", margin: "auto" }}>
       <SquarePaymentForm
         sandbox={true}
         applicationId="sandbox-sq0idb-cjR4Ao7cPUnAYVGSV8yQ1g"
         locationId="LXVGFJMT61QF1"
         cardNonceResponseReceived={cardNonceResponseReceived}
         createVerificationDetails={createVerificationDetails}
-        {...props}
       >
         <fieldset className="sq-fieldset">
           <CreditCardNumberInput />
@@ -95,18 +86,25 @@ const SquareFormPayment = (props, { auth }) => {
             <CreditCardCVVInput />
           </div>
         </fieldset>
+        <PaymentButton
+          price={legiblePrice(Math.max(order.totalMoney.amount - discount, 0))}
+        />
       </SquarePaymentForm>
       <div className="sq-error-message">
         {errorMessages.map((errorMessage) => (
           <li key={`sq-error-${errorMessage}`}>{errorMessage}</li>
         ))}
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 
 function mapStateToProps(state) {
-  return { auth: state.auth };
+  return {
+    auth: state.auth,
+    order: state.transaction.order,
+    discount: state.transaction.discount,
+  };
 }
 
 export default connect(mapStateToProps, actions)(SquareFormPayment);

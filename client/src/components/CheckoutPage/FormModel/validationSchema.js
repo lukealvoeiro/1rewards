@@ -1,21 +1,10 @@
 import * as Yup from "yup";
-import moment from "moment";
 import checkoutFormModel from "./checkoutFormModel";
 const {
-  formField: {
-    firstName,
-    lastName,
-    email,
-    phoneNumber,
-    cardNumber,
-    expiryDate,
-    cvv,
-  },
+  formField: { firstName, lastName, email, phoneNumber },
 } = checkoutFormModel;
 
-const visaRegEx = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
-
-export default [
+const form = [
   Yup.object().shape({
     [firstName.name]: Yup.string().required(`${firstName.requiredErrorMsg}`),
     [lastName.name]: Yup.string().required(`${lastName.requiredErrorMsg}`),
@@ -25,3 +14,5 @@ export default [
       .required(`${phoneNumber.requiredErrorMsg}`),
   }),
 ];
+
+export default form;

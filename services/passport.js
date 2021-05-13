@@ -7,7 +7,7 @@ const { Environment, Client } = require("square");
 const User = mongoose.model("users");
 
 passport.serializeUser((user, done) => {
-  done(null, user._id);
+  done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {

@@ -24,7 +24,7 @@ const getBuyerLoyaltyAccount = async (client, phoneNumber) => {
       ],
     },
   });
-  return result.loyaltyAccounts[0];
+  return result.loyaltyAccounts ? result.loyaltyAccounts[0] : null;
 };
 
 const createBuyerLoyaltyAccount = async (
@@ -67,13 +67,19 @@ const accumulateLoyaltyPoints = async (
       locationId: locationId,
     }
   );
-  console.log(result);
-  return result;
+  return result.program;
 };
 
 const retrieveLoyaltyProgram = async (client, loyaltyProgramId) => {
   const { result } = await client.loyaltyApi.retrieveLoyaltyProgram(
     loyaltyProgramId
+  );
+  return result.program;
+};
+
+const retrieveLoyaltyAccount = async (client, loyaltyAccountId) => {
+  const { result } = await client.loyaltyApi.retrieveLoyaltyAccount(
+    loyaltyAccountId
   );
   return result;
 };
@@ -92,4 +98,5 @@ exports = module.exports = {
   accumulateLoyaltyPoints,
   retrieveLoyaltyProgram,
   retrieveOrder,
+  retrieveLoyaltyAccount,
 };

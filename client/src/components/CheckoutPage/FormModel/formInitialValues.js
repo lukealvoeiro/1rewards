@@ -3,9 +3,11 @@ const {
   formField: { firstName, lastName, email, phoneNumber },
 } = checkoutFormModel;
 
-export default {
+const form = {
   [firstName.name]: "",
   [lastName.name]: "",
   [email.name]: "",
   [phoneNumber.name]: "",
 };
+
+export default form;

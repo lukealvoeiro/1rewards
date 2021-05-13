@@ -7,9 +7,11 @@ const {
   createBuyerLoyaltyAccount,
   retrieveLoyaltyProgram,
   uuidv4,
+  retrieveLoyaltyAccount,
 } = require("../utils/squareUtils");
 const requireLogin = require("../middlewares/requireLogin");
 const mongoose = require("mongoose");
+const Buyer = mongoose.model("buyers");
 const User = mongoose.model("users");
 
 module.exports = (app) => {
@@ -33,38 +35,79 @@ module.exports = (app) => {
 
   app.get("/api/eligible-rewards", requireLogin, async (req, res) => {
     try {
-      const requestParams = req.body;
+      const requestParams = req.query;
       const client = new Client({
         environment: Environment.Sandbox,
         accessToken: req.user.accessToken,
       });
-      const programId = req.user.loyaltyProgramId;
-      let buyerLoyaltyAccount = await getBuyerLoyaltyAccount(
-        client,
-        requestParams.phoneNumber
+      const programId = req.user.loyaltyProgram;
+
+      // find buyer with this phone number
+      let buyer = await Buyer.findOne({
+        phoneNumber: requestParams.phoneNumber,
+      });
+      // if buyer isn't found, create a new one with this phone number
+      if (!buyer) {
+        buyer = await new Buyer({
+          phoneNumber: requestParams.phoneNumber,
+          loyaltyPrograms: [],
+        });
+      }
+      // check if buyer is in this loyalty program
+      let thisAccount = buyer.loyaltyPrograms.find(
+        (obj) => obj.loyaltyProgramId === programId
       );
 
-      if (!buyerLoyaltyAccount) {
-        buyerLoyaltyAccount = await createBuyerLoyaltyAccount(
+      let buyerLoyaltyAccount;
+      if (thisAccount) {
+        // if buyer in loyalty program, then just retrieve their account
+        buyerLoyaltyAccount = await retrieveLoyaltyAccount(
           client,
-          requestParams.phoneNumber,
-          req.user.loyaltyProgramId
+          thisAccount.accountId
         );
       }
+      if (!thisAccount) {
+        // if buyer not in loyalty, here is where it gets a bit complicated...
+        // ------ SITUATION 1 ------
+        // if there is already a loyalty account associated with prior activity,
+        // we want to fetch that and then set the balance of the account to the
+        // max of the buyer's current balance and what was associated with that
+        // loyalty account
+        buyerLoyaltyAccount = await getBuyerLoyaltyAccount(
+          client,
+          requestParams.phoneNumber
+        );
+        if (buyerLoyaltyAccount) {
+          buyer.balance = Math.max(buyerLoyaltyAccount.balance, buyer.balance);
+        } else {
+          // ------ SITUATION 2 ------
+          // buyer is new to this seller, so we just create a brand new loyalty
+          // account for them
+          buyerLoyaltyAccount = await createBuyerLoyaltyAccount(
+            client,
+            requestParams.phoneNumber,
+            programId
+          );
+        }
 
-      const loyaltyProgram = await retrieveLoyaltyProgram(
-        client,
-        req.user.loyaltyProgramId
-      );
+        buyer.loyaltyPrograms.push({
+          loyaltyProgramId: programId,
+          accountId: buyerLoyaltyAccount.id,
+        });
+        buyer.save();
+      }
 
+      const loyaltyProgram = await retrieveLoyaltyProgram(client, programId);
+      console.log(loyaltyProgram);
       const discountAvailable =
-        buyerLoyaltyAccount.balance > loyaltyProgram.reward_tiers[0].points;
+        buyer.balance > loyaltyProgram.rewardTiers[0].points;
       res.status(200).send({
         discountAvailable: discountAvailable,
-        rewardTierId: loyaltyProgram.reward_tiers[0].id,
+        rewardTierId: loyaltyProgram.rewardTiers[0].id,
         loyaltyAccountId: buyerLoyaltyAccount.id,
-        cost: loyaltyProgram.reward_tiers[0].points,
-        balance: buyerLoyaltyAccount.balance,
+        cost: loyaltyProgram.rewardTiers[0].points,
+        balance: buyer.balance,
+        description: loyaltyProgram.rewardTiers[0].name,
       });
     } catch (error) {
       console.log(error);

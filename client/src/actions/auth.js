@@ -5,6 +5,7 @@ import {
   LOGOUT_USER,
   LOYALTY_PROGRAM_RECEIVED,
   ORDER_LOADED,
+  DISCOUNT_APPLIED,
 } from "./types";
 
 export const fetchUser = () => async (dispatch) => {
@@ -46,4 +47,8 @@ export const fetchOrder = (orderId) => async (dispatch) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const applyDiscount = (discountAmount) => (dispatch) => {
+  dispatch({ type: DISCOUNT_APPLIED, payload: discountAmount });
 };

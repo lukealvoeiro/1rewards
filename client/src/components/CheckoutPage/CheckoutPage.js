@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import {
   Stepper,
   Step,
@@ -8,23 +8,21 @@ import {
   CircularProgress,
 } from "@material-ui/core";
 import { Formik, Form } from "formik";
-import { Context } from "react-square-payment-form";
 
 import AddressForm from "./Forms/AddressForm";
 import ReviewOrder from "./ReviewOrder";
-import CheckoutSuccess from "./CheckoutSuccess";
 
 import validationSchema from "./FormModel/validationSchema";
 import checkoutFormModel from "./FormModel/checkoutFormModel";
 import formInitialValues from "./FormModel/formInitialValues";
 
 import useStyles from "./styles";
-import SquareFormPayment from "../SquareFormPayment";
+import SquareFormPayment from "./Forms/SquareFormPayment";
 
 const steps = ["Customer Information", "Review Order", "Pay for Order "];
 const { formId, formField } = checkoutFormModel;
 
-function _renderStepContent(step) {
+function _renderStepContent(step, isLoad) {
   switch (step) {
     case 0:
       return <AddressForm formField={formField} />;
@@ -43,24 +41,8 @@ export default function CheckoutPage() {
   const currentValidationSchema = validationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
 
-  function _sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
-
-  async function _submitForm(values, actions) {
-    const context = useContext(Context);
-    context.onCreateNonce();
-    await _sleep(1000);
-    alert(JSON.stringify(values, null, 2));
-    actions.setSubmitting(false);
-
-    setActiveStep(activeStep + 1);
-  }
-
   function _handleSubmit(values, actions) {
-    if (isLastStep) {
-      _submitForm(values, actions);
-    } else {
+    if (!isLastStep) {
       setActiveStep(activeStep + 1);
       actions.setTouched({});
       actions.setSubmitting(false);
@@ -76,7 +58,11 @@ export default function CheckoutPage() {
       <Typography component="h1" variant="h4" align="center">
         Checkout
       </Typography>
-      <Stepper activeStep={activeStep} className={classes.stepper}>
+      <Stepper
+        activeStep={activeStep}
+        className={classes.stepper}
+        alternativeLabel
+      >
         {steps.map((label) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
@@ -84,8 +70,8 @@ export default function CheckoutPage() {
         ))}
       </Stepper>
       <React.Fragment>
-        {activeStep === steps.length ? (
-          <CheckoutSuccess />
+        {activeStep === 2 ? (
+          _renderStepContent(activeStep)
         ) : (
           <Formik
             initialValues={formInitialValues}

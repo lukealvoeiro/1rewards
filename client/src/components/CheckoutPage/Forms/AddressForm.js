@@ -1,7 +1,6 @@
 import React from "react";
 import { Grid, Typography } from "@material-ui/core";
-import { InputField, CheckboxField, SelectField } from "../../FormFields";
-import MuiPhoneNumber from "material-ui-phone-number";
+import { InputField } from "../../FormControls";
 
 export default function AddressForm(props) {
   const {
@@ -11,7 +10,7 @@ export default function AddressForm(props) {
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
-        Shipping address
+        Customer Information
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
