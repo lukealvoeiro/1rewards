@@ -6,6 +6,8 @@ import {
   LOYALTY_PROGRAM_RECEIVED,
   ORDER_LOADED,
   DISCOUNT_APPLIED,
+  ORDER_PAYED,
+  PAY_ERROR,
 } from "./types";
 
 export const fetchUser = () => async (dispatch) => {
@@ -53,4 +55,15 @@ export const applyDiscount = (discount) => (dispatch) => {
   discount.amount = 1000;
   discount.applied = true;
   dispatch({ type: DISCOUNT_APPLIED, payload: discount });
+};
+
+export const payOrder = (paymentBody) => async (dispatch) => {
+  try {
+    const res = await axios.post("/api/process-payment", paymentBody);
+    if (res.status === 200) {
+      dispatch({ type: ORDER_PAYED, payload: res.data });
+    }
+  } catch (error) {
+    dispatch({ type: PAY_ERROR });
+  }
 };

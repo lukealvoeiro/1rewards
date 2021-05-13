@@ -11,6 +11,7 @@ import { Formik, Form } from "formik";
 
 import AddressForm from "./Forms/AddressForm";
 import ReviewOrder from "./ReviewOrder";
+import SuccessPage from "./SuccessPage";
 
 import validationSchema from "./FormModel/validationSchema";
 import checkoutFormModel from "./FormModel/checkoutFormModel";
@@ -21,19 +22,6 @@ import SquareFormPayment from "./Forms/SquareFormPayment";
 
 const steps = ["Customer Information", "Review Order", "Pay for Order "];
 const { formId, formField } = checkoutFormModel;
-
-function _renderStepContent(step, isLoad) {
-  switch (step) {
-    case 0:
-      return <AddressForm formField={formField} />;
-    case 1:
-      return <ReviewOrder />;
-    case 2:
-      return <SquareFormPayment />;
-    default:
-      return <div>Not Found</div>;
-  }
-}
 
 export default function CheckoutPage() {
   const classes = useStyles();
@@ -46,11 +34,28 @@ export default function CheckoutPage() {
       setActiveStep(activeStep + 1);
       actions.setTouched({});
       actions.setSubmitting(false);
+    } else {
+      setActiveStep(activeStep + 1);
     }
   }
 
   function _handleBack() {
     setActiveStep(activeStep - 1);
+  }
+
+  function _renderStepContent(step) {
+    switch (step) {
+      case 0:
+        return <AddressForm formField={formField} />;
+      case 1:
+        return <ReviewOrder />;
+      case 2:
+        return <SquareFormPayment advance={_handleSubmit} />;
+      case 3:
+        return <SuccessPage />;
+      default:
+        return <div>Not Found</div>;
+    }
   }
 
   return (
@@ -75,7 +80,7 @@ export default function CheckoutPage() {
           validationSchema={currentValidationSchema}
           onSubmit={_handleSubmit}
         >
-          {activeStep === 2
+          {activeStep >= 2
             ? _renderStepContent(activeStep)
             : ({ isSubmitting }) => (
                 <Form id={formId}>

@@ -29,7 +29,9 @@ const Header = ({ auth, logoutUser }) => {
     <AppBar position="sticky">
       <Toolbar>
         <Typography variant="h5" className={classes.title}>
-          1Rewards
+          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+            1Rewards
+          </Link>
         </Typography>
         {auth.isAuthenticated ? (
           <Button color="inherit" onClick={logoutUser}>

@@ -14,7 +14,15 @@ import { PaymentButton } from "../../FormControls";
 import legiblePrice from "../../../utils/money";
 import { useFormikContext } from "formik";
 
-const SquareFormPayment = ({ auth, order, discount }) => {
+const SquareFormPayment = ({
+  auth,
+  order,
+  discount,
+  payOrder,
+  advance,
+  fulfilled,
+}) => {
+  const [paymentLoading, setPaymentLoading] = useState(false);
   const [errorMessages, setErrorMessages] = useState([]);
   const price = Math.max(order.totalMoney.amount - discount.amount, 0);
   const { values: formValues } = useFormikContext();
@@ -30,21 +38,19 @@ const SquareFormPayment = ({ auth, order, discount }) => {
     }
     setErrorMessages([]);
     // now send none and buyer verification token to backend
-    try {
-      const response = await axios.post("/api/process-payment", {
-        nonce: nonce,
-        buyerVerificationToken: buyerVerificationToken,
-        accessToken: auth.user.accessToken,
-        phoneNumber: formValues.phoneNumber,
-        orderId: order.id,
-        price: price,
-        discount: discount.applied ? true : false,
-        rewardTierId: discount.rewardTierId,
-      });
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
+    setPaymentLoading(true);
+    await payOrder({
+      nonce: nonce,
+      buyerVerificationToken: buyerVerificationToken,
+      accessToken: auth.user.accessToken,
+      phoneNumber: formValues.phoneNumber,
+      orderId: order.id,
+      price: price,
+      discount: discount.applied ? true : false,
+      rewardTierId: discount.rewardTierId,
+    });
+    setPaymentLoading(false);
+    advance();
   };
 
   const createVerificationDetails = (phoneNumber) => {
@@ -88,7 +94,7 @@ const SquareFormPayment = ({ auth, order, discount }) => {
             <CreditCardCVVInput />
           </div>
         </fieldset>
-        <PaymentButton price={legiblePrice(price)} />
+        <PaymentButton price={legiblePrice(price)} loading={paymentLoading} />
       </SquarePaymentForm>
       <div className="sq-error-message">
         {errorMessages.map((errorMessage) => (
@@ -104,6 +110,7 @@ function mapStateToProps(state) {
     auth: state.auth,
     order: state.transaction.order,
     discount: state.transaction.discount,
+    fulfilled: state.transaction.fulfilled,
   };
 }
 

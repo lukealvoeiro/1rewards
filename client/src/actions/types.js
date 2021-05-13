@@ -5,3 +5,5 @@ export const LOGOUT_USER = "logout_user";
 export const LOYALTY_PROGRAM_RECEIVED = "loyalty_program_received";
 export const ORDER_LOADED = "order_loaded";
 export const DISCOUNT_APPLIED = "discount_applied";
+export const ORDER_PAYED = "order_payed";
+export const PAY_ERROR = "pay_error";

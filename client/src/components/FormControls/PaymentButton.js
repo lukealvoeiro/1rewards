@@ -2,7 +2,7 @@ import { Button } from "@material-ui/core";
 import React, { useContext } from "react";
 import { Context } from "react-square-payment-form";
 
-const PaymentButton = ({ price }) => {
+const PaymentButton = ({ price, loading }) => {
   const context = useContext(Context);
 
   const handleSubmit = (event) => {
@@ -17,6 +17,7 @@ const PaymentButton = ({ price }) => {
       color="primary"
       onClick={handleSubmit}
       size="large"
+      disabled={loading}
     >
       Pay {price}
     </Button>

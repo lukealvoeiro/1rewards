@@ -53,9 +53,7 @@ module.exports = (app) => {
         environment: Environment.Sandbox,
         accessToken: req.user.accessToken,
       });
-      console.log(requestParams.orderId);
       const order = await retrieveOrder(client, requestParams.orderId);
-      console.log(order);
       res.status(200).send(JSONBig.parse(JSONBig.stringify(order)));
     } catch (error) {
       console.log(error);
