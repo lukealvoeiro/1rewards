@@ -1,4 +1,5 @@
-import React from "react";
+import { Typography } from "@material-ui/core";
+import React, { Fragment } from "react";
 import { withRouter } from "react-router-dom";
 
 const Welcome = ({ location }) => {
@@ -11,9 +12,18 @@ const Welcome = ({ location }) => {
   };
 
   return (
-    <a href="/auth/square" onClick={() => signUp()}>
-      Authorize your app!
-    </a>
+    <Fragment>
+      <Typography variant="body1" gutterBottom>
+        <a href="/auth/square" onClick={() => signUp()}>
+          Authorize your app!
+        </a>
+      </Typography>
+      <Typography variant="subtitle1">
+        {
+          "1Rewards requires authorization from Square to take payments for you."
+        }
+      </Typography>
+    </Fragment>
   );
 };
 

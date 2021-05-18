@@ -4,15 +4,8 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import SquareLoyalty from "./SquareLoyalty";
-import { Card, CardContent, makeStyles } from "@material-ui/core";
 import CheckoutPage from "./CheckoutPage/CheckoutPage";
 import CreateOrder from "./CreateOrder";
-
-const useStyles = makeStyles((theme) => ({
-  paymentForm: {
-    marginTop: theme.spacing(2),
-  },
-}));
 
 const Landing = ({ auth, location, fetchOrder }) => {
   let orderId = localStorage.getItem("order_id");
@@ -26,18 +19,13 @@ const Landing = ({ auth, location, fetchOrder }) => {
     fetchOrder(orderId);
   }, [fetchOrder, orderId]);
 
-  const classes = useStyles();
   const content = () => {
     if (auth.user.loyaltyProgram && orderId) return <CheckoutPage />;
     else if (auth.user.loyaltyProgram) return <CreateOrder />;
     return <SquareLoyalty />;
   };
 
-  return (
-    <Card className={classes.paymentForm}>
-      <CardContent>{content()}</CardContent>
-    </Card>
-  );
+  return content();
 };
 
 function mapStateToProps(state) {

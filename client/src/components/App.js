@@ -7,21 +7,32 @@ import Welcome from "./Welcome";
 import Header from "./Header";
 import * as actions from "../actions";
 import { Container } from "@material-ui/core";
+import { Card, CardContent, makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  paymentForm: {
+    marginTop: theme.spacing(2),
+  },
+}));
 
 const App = ({ fetchUser }) => {
   useEffect(() => {
     fetchUser();
   }, [fetchUser]);
-
+  const classes = useStyles();
   return (
     <BrowserRouter>
       <Header />
       <Container>
-        <Switch>
-          <PrivateRoute exact path="/" component={Landing} />
+        <Card className={classes.paymentForm}>
+          <CardContent>
+            <Switch>
+              <PrivateRoute exact path="/" component={Landing} />
 
-          <Route exact path="/welcome" component={Welcome} />
-        </Switch>
+              <Route exact path="/welcome" component={Welcome} />
+            </Switch>
+          </CardContent>
+        </Card>
       </Container>
     </BrowserRouter>
   );
